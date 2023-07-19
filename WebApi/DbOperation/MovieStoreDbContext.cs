@@ -17,6 +17,10 @@ namespace WebApi.DbOperation
         public DbSet<ActorMovies> ActorMovies {get; set;}
         public DbSet<Director> Directors {get; set;}
         public DbSet<DirectorMovie> DirectorMovies {get; set;}
+        public DbSet<Customer> Customers {get; set;}
+        public DbSet<PurchasedMovies> PurchasedMovies {get; set;}
+        public DbSet<FavoriteGenre> FavoriteGenres {get; set;}
+
         public override int SaveChanges()
         {
             return base.SaveChanges();
