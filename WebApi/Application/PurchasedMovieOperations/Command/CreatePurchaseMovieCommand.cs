@@ -43,7 +43,7 @@ namespace WebApi.Application.PurchasedMovieOperations.Command
 
             public int CustomerId { get; set; }
             DateTime PurchasedTime = DateTime.Now;
-            bool MovieStatus = true;
+            //bool MovieStatus = true;
         }
 
     }

@@ -2,8 +2,11 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.Application.CustomerOperations;
 using WebApi.Application.CustomerOperations.Queries;
+using WebApi.Application.TokenOperations;
 using WebApi.DbOperation;
+using WebApi.TokenOperations;
 using static WebApi.Application.CustomerOperations.CreateCustomerCommand;
+using static WebApi.Application.TokenOperations.CreateTokenCommand;
 
 namespace WebApi.Controllers
 {
@@ -14,10 +17,13 @@ namespace WebApi.Controllers
         private readonly IMovieStoreDbContext _context;
         private readonly IMapper _mapper;
 
-        public CustomerController(IMapper mapper, IMovieStoreDbContext context)
+        private readonly IConfiguration _configuration;
+
+        public CustomerController(IMapper mapper, IMovieStoreDbContext context, IConfiguration configuration)
         {
             _mapper = mapper;
             _context = context;
+            _configuration = configuration;
         }
 
         [HttpGet]
@@ -38,6 +44,26 @@ namespace WebApi.Controllers
             command.Handle();
 
             return Ok();
+        }
+
+        [HttpPost("connect/token")]
+        public ActionResult<Token> CreateToken([FromBody] CreateTokenModel login )
+        {
+            CreateTokenCommand command = new CreateTokenCommand(_configuration,_context);
+
+            command.model = login;
+
+            var token = command.Handle();
+
+            return token;
+        }
+        [HttpGet("refreshToken")]
+        public ActionResult<Token> RefreshToken([FromBody] string token)
+        {
+            RefreshTokenCommand command = new RefreshTokenCommand(_configuration,_context);
+            command.RefreshToken = token;
+            var resultToken = command.Handle();
+            return resultToken;
         }
     }
     
