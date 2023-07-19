@@ -4,6 +4,7 @@ using WebApi.Application.FavoriteGenreOperations.Command;
 using WebApi.Application.FavoriteGenreOperations.Queries;
 using WebApi.DbOperation;
 using static WebApi.Application.FavoriteGenreOperations.Command.CreateFavoriteGenresCommand;
+using static WebApi.Application.FavoriteGenreOperations.Command.UpdateFavoriteGenresCommand;
 
 namespace WebApi.Controllers
 {
@@ -37,6 +38,27 @@ namespace WebApi.Controllers
             command.Handle();
             
             return Ok(createModel);
+        }
+        [HttpPut("{id}")]
+        public IActionResult UpdateFavoriteGenre([FromBody] UpdateFavoriteGenresModel UpdateFavoriteGenresModel ,int id)
+        {
+            UpdateFavoriteGenresCommand command = new UpdateFavoriteGenresCommand(_mapper,_context);
+            command.Model = UpdateFavoriteGenresModel;
+            command.Id = id;
+
+            command.Handle();
+
+            return Ok();
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteFavoriteGenre(int id)
+        {
+            DeleteFavoriteGenresCommand command = new DeleteFavoriteGenresCommand(_context);
+            command.Id = id;
+            command.Handle();
+            
+            return Ok();
         }
     }
 }

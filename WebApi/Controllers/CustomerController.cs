@@ -1,6 +1,7 @@
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.Application.CustomerOperations;
+using WebApi.Application.CustomerOperations.Command;
 using WebApi.Application.CustomerOperations.Queries;
 using WebApi.Application.TokenOperations;
 using WebApi.DbOperation;
@@ -43,6 +44,24 @@ namespace WebApi.Controllers
 
             command.Handle();
 
+            return Ok();
+        }
+        [HttpPut("{id}")]
+        public IActionResult UpdateCustomer([FromBody]CustomerModel updateModel, int id)
+        {
+            UpdateCustomerCommand command = new UpdateCustomerCommand(_context);
+            command.Model = updateModel;
+            command.Id = id;
+
+            command.Handle();
+            return Ok();
+        }
+        [HttpDelete]
+        public IActionResult DeleteCustomer(int id)
+        {
+            UpdateCutomerCommand command = new UpdateCutomerCommand(_context);
+            command.Id = id;
+            command.Handle();
             return Ok();
         }
 

@@ -37,6 +37,24 @@ namespace WebApi.Controllers
                 command.Handle();
                 return Ok(createModel);
         }
+        [HttpPut("{id}")]
+        public IActionResult UpdatePurchaseMovie(int id,PurchasedMovieModel updateModel )
+        {
+            UpdatePurchaseMovieCommand command = new UpdatePurchaseMovieCommand(_context);
+            command.model = updateModel;
+            command.Id = id;
 
+            command.Handle();
+            return Ok();
+        }
+        [HttpDelete("{id}")]
+        public IActionResult DeletePurchaseMovie(int id)
+        {
+            DeletePurchaseCommand command = new DeletePurchaseCommand(_context);
+
+            command.Id = id;
+            command.Handle();
+            return Ok();
+        }
     }
 }
