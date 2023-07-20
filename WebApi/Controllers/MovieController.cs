@@ -1,4 +1,5 @@
 using AutoMapper;
+using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.Application.MovieOperations.Command;
 using WebApi.Application.MovieOperations.Queries;
@@ -34,9 +35,10 @@ namespace WebApi.Controllers
         public IActionResult AddMovie([FromBody] CreateMovieModel newMovie)
         {
             CreateMovieCommand command = new CreateMovieCommand(_mapper,_context);
-
+            CreateMovieValidator valid = new
+            CreateMovieValidator();
             command.Model = newMovie;
-
+            valid.ValidateAndThrow(command);
             command.Handle();
             return Ok(newMovie);
         }
@@ -47,6 +49,10 @@ namespace WebApi.Controllers
             UpdateMovieCommand command = new UpdateMovieCommand(_context);
             command.Model = updateMovie;
             command.MovieId = id;
+
+            UpdateMovieValidator valid = new UpdateMovieValidator();
+            
+            valid.ValidateAndThrow(command);
             command.Handle();
             return Ok();
 
