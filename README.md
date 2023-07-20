@@ -1,7 +1,5 @@
-# MovieStore
-Patika back-end project
 # Movie Store Uygulaması
-
+Patika back-end project
 Bu proje, Movie Store uygulamasının servislerini sağlamak için tasarlanmıştır. Uygulama, film, oyuncu, yönetmen ve müşteri verilerini yönetmeyi ve müşterilerin filmleri satın almasını kolaylaştırmayı amaçlamaktadır.
 
 ## Proje Yapısı
@@ -79,8 +77,3 @@ Bu proje, Movie Store uygulamasının servislerini sağlamak için tasarlanmış
 
 7. **Silme Servisleri ve Veri Tutarlılığı:**
    - Silme servislerinde veri tutarlılığı dikkate alınmalıdır. Diğer tablolarda ilişkili verisi bulunan kayıtlar silinemez.
-
-## Uygulama Notları
-
-Bu README dosyası, projenin temel gereksinimlerini ve yapısı ile ilgili bilgileri içermektedir. Proje geliştirilirken belirtilen gereksinimler ve kurallar doğrultusunda ilerlenmelidir. Herhangi bir soru veya sorun için proje ekibine danışılmalıdır. Projenin başarıyla tamamlanması ve tüm gereksinimlerin karşılanması temennisiyle!
-
