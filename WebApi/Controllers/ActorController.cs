@@ -1,4 +1,5 @@
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.Application.ActorOperations.Command;
 using WebApi.Application.ActorOperations.Queries;
@@ -7,6 +8,7 @@ using static WebApi.Application.ActorOperations.Command.UpdateActorCommand;
 
 namespace WebApi.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("[controller]s")]
     public class ActorController : Controller

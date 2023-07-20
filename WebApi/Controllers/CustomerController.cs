@@ -1,4 +1,5 @@
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.Application.CustomerOperations;
 using WebApi.Application.CustomerOperations.Command;
@@ -11,6 +12,7 @@ using static WebApi.Application.TokenOperations.CreateTokenCommand;
 
 namespace WebApi.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("[controller]s")]
     public class CustomerController : Controller

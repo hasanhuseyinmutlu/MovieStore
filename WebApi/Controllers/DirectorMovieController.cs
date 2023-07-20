@@ -1,4 +1,5 @@
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.Application.DirectorMoviesOperations.Command;
 using WebApi.Application.DirectorMoviesOperations.Queries;
@@ -7,6 +8,7 @@ using static WebApi.Application.DirectorMoviesOperations.Command.UpdateDirectorM
 
 namespace WebApi.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("[controller]s")]
     public class DirectorMovieController : Controller

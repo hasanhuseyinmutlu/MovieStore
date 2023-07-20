@@ -1,4 +1,5 @@
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.Application.PurchasedMovieOperations.Command;
 using WebApi.Application.PurchasedMovieOperations.Queries;
@@ -7,6 +8,7 @@ using static WebApi.Application.PurchasedMovieOperations.Command.CreatePurchaseM
 
 namespace WebApi.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("[controller]s")]
     public class PurchaseMovieController : Controller

@@ -1,5 +1,6 @@
 using AutoMapper;
 using FluentValidation;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.Application.MovieOperations.Command;
 using WebApi.Application.MovieOperations.Queries;
@@ -9,6 +10,7 @@ using static WebApi.Application.MovieOperations.Command.UpdateMovieCommand;
 
 namespace WebApi.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("[controller]s")]
     public class MovieController : Controller
