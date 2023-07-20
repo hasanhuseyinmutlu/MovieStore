@@ -52,6 +52,12 @@ builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
 var app = builder.Build();
 // Buraya seeded data için config ekle
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+
+    SeededData.Initialize(services);
+}
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
